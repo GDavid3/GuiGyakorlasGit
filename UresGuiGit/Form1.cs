@@ -25,9 +25,15 @@ namespace UresGuiGit
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Biztos kiakar lépni?","Kilépés", MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
+            this.Close();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Biztos kiakar lépni?", "Kilépés", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
             {
-                Application.Exit();
+                e.Cancel = true;
+                OnClosing(e);
             }
         }
     }
